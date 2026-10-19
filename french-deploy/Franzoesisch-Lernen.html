@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Französisch Lernen</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#6C63FF;--s:#FF6584;--ok:#00C853;--bg:#F0F4FF;--t:#2D3436;--tl:#636E72;--r:16px;--sh:0 8px 32px rgba(108,99,255,.15)}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--t);min-height:100vh;padding-bottom:40px}
+.hd{background:linear-gradient(135deg,var(--p),#A78BFA);color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:100}
+.hd h1{font-size:1.5em}.hd p{opacity:.9;font-size:.9em}
+.nv{display:flex;justify-content:center;gap:5px;padding:10px 6px;flex-wrap:wrap}
+.nb{padding:7px 12px;border:2px solid var(--p);background:#fff;color:var(--p);border-radius:50px;font-size:.78em;font-weight:700;cursor:pointer;transition:all .3s;white-space:nowrap}
+.nb:hover,.nb.on{background:var(--p);color:#fff;transform:translateY(-2px)}
+.pb{background:#E0E0E0;border-radius:20px;height:12px;margin:6px 16px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--ok),#69F0AE);border-radius:20px;transition:width .5s}
+.sr{display:flex;justify-content:center;gap:14px;padding:0 16px 6px;flex-wrap:wrap}
+.sb{background:#fff;padding:4px 12px;border-radius:50px;font-size:.82em;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.ct{max-width:720px;margin:0 auto;padding:12px}
+.sc{display:none}.sc.on{display:block}
+.card{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--sh);margin:14px auto;text-align:center}
+.card h2{font-size:1.3em;margin-bottom:6px}.card p{color:var(--tl);margin-bottom:10px}
+.fp{perspective:1000px;margin:14px auto}
+.fc{width:100%;min-height:200px;position:relative;cursor:pointer;transition:transform .6s;transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
+.fc.fl{transform:rotateY(180deg)}
+.ff{position:absolute;width:100%;min-height:200px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-shadow:var(--sh)}
+.f1{background:linear-gradient(135deg,#FFE0B2,#FFCC80);transform:rotateY(0deg)}
+.f2{background:linear-gradient(135deg,#B2EBF2,#80DEEA);transform:rotateY(180deg)}
+.lb{font-size:.82em;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;opacity:.6}
+.fw{font-size:1.7em;font-weight:800;text-align:center;line-height:1.3}
+.btn{padding:10px 24px;border:none;border-radius:50px;font-size:.95em;font-weight:700;cursor:pointer;transition:all .2s;margin:4px}
+.btn-p{background:var(--p);color:#fff}.btn-p:hover{transform:translateY(-2px)}
+.btn-g{background:var(--ok);color:#fff}.btn-s{background:var(--s);color:#fff}
+.btn-o{background:#fff;border:2px solid var(--p);color:var(--p)}.btn-o:hover{background:var(--p);color:#fff}
+.btn-sm{padding:7px 14px;font-size:.82em}
+.wi{width:100%;padding:12px;font-size:1.1em;border:3px solid #E0E0E0;border-radius:12px;text-align:center;outline:none;transition:border-color .3s}
+.wi:focus{border-color:var(--p)}.wi.ok{border-color:var(--ok);background:#E8F5E9}.wi.no{border-color:var(--s);background:#FFEBEE}
+.ct2{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
+.ctb{padding:5px 12px;border-radius:50px;border:2px solid #DDD;background:#fff;cursor:pointer;font-weight:600;font-size:.8em;transition:all .2s}
+.ctb:hover,.ctb.on{border-color:var(--p);background:var(--p);color:#fff}
+.wl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.wl-item{background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:all .2s;border-left:4px solid var(--p)}
+.wl-item:hover{transform:translateX(4px)}.wl-item .wl-fr{font-weight:700;color:var(--p)}.wl-item .wl-de{color:var(--tl);font-size:.85em}
+.chat{max-width:600px;margin:0 auto}
+.chat-bubble{padding:12px 16px;border-radius:16px;margin:8px 0;max-width:85%;position:relative;line-height:1.4}
+.chat-l{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);margin-right:auto;border-bottom-left-radius:4px}
+.chat-r{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);margin-left:auto;border-bottom-right-radius:4px;text-align:right}
+.chat-name{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;opacity:.7}
+.chat-fr{font-size:1.05em;font-weight:600}.chat-de{font-size:.82em;color:var(--tl);font-style:italic;margin-top:3px}
+.gram-rule{background:linear-gradient(135deg,#FFF9C4,#FFF176);border-radius:12px;padding:14px;margin:10px 0;border-left:4px solid #FFD600}
+.gram-rule h3{color:#F57F17;margin-bottom:4px}
+.exam-q{background:#fff;border-radius:12px;padding:14px;margin:8px 0;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:left}
+.exam-q label{font-weight:600;display:block;margin-bottom:6px}
+.exam-opt{display:flex;gap:6px;flex-wrap:wrap}
+.exam-opt button{padding:7px 18px;border:2px solid #DDD;border-radius:50px;background:#fff;font-weight:600;cursor:pointer;transition:all .2s}
+.exam-opt button:hover{border-color:var(--p)}.exam-opt button.sel{border-color:var(--p);background:var(--p);color:#fff}
+.bilan-item{display:flex;align-items:center;gap:10px;padding:8px;border-bottom:1px solid #eee}
+.tl{display:flex;gap:4px}.tl span{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid #ccc;transition:all .2s}.tl span:hover{transform:scale(1.2)}
+.tl .tl-r{background:#ffcdd2}.tl .tl-r.on{background:#f44336;border-color:#c62828}
+.tl .tl-y{background:#fff9c4}.tl .tl-y.on{background:#fdd835;border-color:#f9a825}
+.tl .tl-g{background:#c8e6c9}.tl .tl-g.on{background:#4caf50;border-color:#2e7d32}
+.acc-row{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin:6px 0}
+.acc-btn{width:36px;height:36px;border:2px solid #DDD;border-radius:8px;background:#fff;font-size:1em;cursor:pointer;font-weight:600;transition:all .2s}
+.acc-btn:hover{border-color:var(--p);background:var(--p);color:#fff}
+.num-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:8px}
+.num-item{background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;transition:all .2s;border:2px solid transparent;text-align:center}
+.num-item:hover{border-color:var(--p);transform:translateY(-2px);background:#F0F4FF}
+.num-item .num-digit{font-size:1.3em;font-weight:800;color:var(--p)}.num-item .num-fr{font-size:.85em;color:var(--t);margin-top:2px}
+.mic-btn{width:60px;height:60px;border-radius:50%;border:none;background:var(--s);color:#fff;font-size:1.6em;cursor:pointer;transition:all .3s}
+.mic-btn.listening{animation:pulse 1s infinite;background:#f44336}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(244,67,54,.5)}50%{box-shadow:0 0 0 20px rgba(244,67,54,0)}}
+.cof{position:fixed;top:-10px;width:10px;height:10px;border-radius:50%;animation:fall 3s ease-in forwards;z-index:9999;pointer-events:none}
+@keyframes fall{to{top:110vh;transform:rotate(720deg)}}
+.home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:14px}
+.home-card{background:#fff;border-radius:16px;padding:14px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,.06);border:2px solid transparent}
+.home-card:hover{border-color:var(--p);transform:translateY(-4px)}
+.home-card .hc-icon{font-size:1.8em;margin-bottom:4px}.home-card .hc-title{font-weight:700;font-size:.82em}
+.fn{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:16px}
+.fn button{width:50px;height:50px;border-radius:50%;border:none;background:var(--p);color:#fff;font-size:1.3em;cursor:pointer;transition:all .2s}
+.fn button:hover{transform:scale(1.1)}.fcn{font-size:1em;font-weight:700;color:var(--tl);min-width:70px;text-align:center}
+.result{text-align:center;padding:20px}.result .r-emoji{font-size:2.5em}.result .r-title{font-size:1.3em;font-weight:800;margin:6px 0}.result .r-text{color:var(--tl)}
+@media(max-width:600px){.hd h1{font-size:1.2em}.nb{padding:5px 8px;font-size:.7em}.fw{font-size:1.3em}.wl-grid{grid-template-columns:1fr}.home-grid{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<div class="hd"><h1>🇫🇷 Französisch Lernen</h1><p>Unité 1 &amp; 2 — Prüfungsvorbereitung</p></div>
+<div class="nv">
+<button class="nb on" onclick="go('home')">🏠 Start</button>
+<button class="nb" onclick="go('list')">📖 Wörter</button>
+<button class="nb" onclick="go('flash')">📇 Karten</button>
+<button class="nb" onclick="go('write')">✍️ Schreiben</button>
+<button class="nb" onclick="go('speak')">🎤 Sprechen</button>
+<button class="nb" onclick="go('dialog')">🗣️ Dialog</button>
+<button class="nb" onclick="go('grammar')">📐 Grammatik</button>
+<button class="nb" onclick="go('exam')">📝 Prüfung</button>
+<button class="nb" onclick="go('done')">✅ Geschafft</button>
+<button class="nb" onclick="go('numbers')">🔢 Zahlen</button>
+<button class="nb" onclick="go('practice')">🔄 Üben</button>
+</div>
+<div class="pb"><div class="pf" id="pbar" style="width:0%"></div></div>
+<div class="sr">
+<span class="sb">🔥 <b id="stk">0</b></span>
+<span class="sb">⭐ <b id="bst">0</b></span>
+<span class="sb">✅ <b id="mst">0</b></span>
+<span class="sb">🔄 <b id="wrn">0</b></span>
+</div>
+<div class="ct">
+<div class="sc on" id="home"><div class="card"><h2>👋 Willkommen!</h2><p>Wähle, wie du heute lernen möchtest:</p>
+<div class="home-grid">
+<div class="home-card" onclick="go('list')"><div class="hc-icon">📖</div><div class="hc-title">Wortliste</div></div>
+<div class="home-card" onclick="go('flash')"><div class="hc-icon">📇</div><div class="hc-title">Karten</div></div>
+<div class="home-card" onclick="go('write')"><div class="hc-icon">✍️</div><div class="hc-title">Schreiben</div></div>
+<div class="home-card" onclick="go('speak')"><div class="hc-icon">🎤</div><div class="hc-title">Sprechen</div></div>
+<div class="home-card" onclick="go('dialog')"><div class="hc-icon">🗣️</div><div class="hc-title">Dialog</div></div>
+<div class="home-card" onclick="go('grammar')"><div class="hc-icon">📐</div><div class="hc-title">Grammatik</div></div>
+<div class="home-card" onclick="go('exam')"><div class="hc-icon">📝</div><div class="hc-title">Prüfung</div></div>
+<div class="home-card" onclick="go('done')"><div class="hc-icon">✅</div><div class="hc-title">Geschafft</div></div>
+<div class="home-card" onclick="go('numbers')"><div class="hc-icon">🔢</div><div class="hc-title">Zahlen</div></div>
+<div class="home-card" onclick="go('practice')"><div class="hc-icon">🔄</div><div class="hc-title">Weiter üben</div></div>
+</div>
+<p style="margin-top:14px">
+<button class="btn btn-p btn-sm" onclick="exportProgress()">💾 Fortschritt speichern</button>
+<button class="btn btn-o btn-sm" onclick="importProgress()">📂 Fortschritt laden</button>
+<button class="btn btn-s btn-sm" onclick="resetAll()">🗑️ Fortschritt löschen</button>
+</p>
+<input type="file" id="impFile" accept=".json" style="display:none" onchange="doImport(event)">
+</div></div>
+<div class="sc" id="list"><div class="card"><h2>📖 Wortliste</h2><p>Klicke auf ein Wort, um es zu hören!</p></div>
+<div class="ct2" id="listCats"></div><div class="wl-grid" id="listGrid"></div></div>
+<div class="sc" id="flash"><div class="card"><h2>📇 Karteikarten</h2><p>Klicke zum Umdrehen!</p></div>
+<div class="ct2" id="flashCats"></div>
+<div class="fp"><div class="fc" id="fcard" onclick="flip()">
+<div class="ff f1"><div class="lb">Deutsch</div><div class="fw" id="fde"></div></div>
+<div class="ff f2"><div class="lb">Français</div><div class="fw" id="ffr"></div><button class="btn btn-sm btn-o" style="margin-top:10px" onclick="event.stopPropagation();speak(FLIST[fi].fr)">🔊</button></div>
+</div></div>
+<div class="fn"><button onclick="fprev()">⬅️</button><span class="fcn" id="fcnt">1/1</span><button onclick="fnext()">➡️</button></div></div>
+<div class="sc" id="write"><div class="card"><h2>✍️ Schreiben</h2><p>Übersetze ins Französische!</p></div>
+<div class="ct2" id="writeCats"></div>
+<div class="card"><div class="lb" id="wlbl">Übersetze:</div><div class="fw" id="wword"></div>
+<div class="acc-row" id="waccr"></div>
+<input class="wi" id="winp" placeholder="Französisch..." autocomplete="off">
+<div style="margin-top:10px" id="wfb"></div>
+<div style="margin-top:10px"><button class="btn btn-p" id="wchk" onclick="wcheck()">✓ Prüfen</button>
+<button class="btn btn-g" id="wnxt" onclick="wnext()" style="display:none">➡️ Weiter</button></div>
+<div class="fcn" id="wcnt"></div></div></div>
+<div class="sc" id="speak"><div class="card"><h2>🎤 Aussprechen</h2><p>Höre das Wort und sprich es nach!</p></div>
+<div class="ct2" id="speakCats"></div>
+<div class="card"><div class="lb">Sprich dieses Wort:</div><div class="fw" id="spword"></div>
+<div style="margin:12px 0"><button class="btn btn-o" onclick="speak(SLIST[si].fr)">🔊 Nochmal</button></div>
+<div id="spmic"></div><div style="margin-top:10px" id="spfb"></div>
+<div style="margin-top:10px"><button class="btn btn-g" id="spnxt" onclick="snext()" style="display:none">➡️ Weiter</button></div>
+<div class="fcn" id="spcnt"></div></div></div>
+<div class="sc" id="dialog"><div class="card"><h2>🗣️ Interaktiver Dialog</h2><p>Führe echte Gespräche auf Französisch!</p></div>
+<div class="ct2" id="dlgList"></div>
+<div id="dlgArea" class="card" style="display:none">
+<div class="chat" id="chatBox"></div>
+<div id="dlgInput" style="display:none;margin-top:12px">
+<div class="chat-de" id="dlgHint" style="font-style:normal;margin-bottom:6px"></div>
+<div class="acc-row" id="daccr"></div>
+<input class="wi" id="dlgInp" placeholder="Deine Antwort..." autocomplete="off" style="text-align:left">
+<div style="margin-top:8px">
+<button class="btn btn-p" id="dlgChk" onclick="dlgCheck()">✓ Prüfen</button>
+<button class="btn btn-o" id="dlgHlp" onclick="dlgHelp()">💡 Hilfe</button>
+<button class="btn btn-g" id="dlgNxt" onclick="dlgNext()" style="display:none">➡️ Weiter</button>
+</div><div id="dlgFb" style="margin-top:8px"></div></div></div></div>
+<div class="sc" id="grammar"><div class="card"><h2>📐 Grammatik</h2><p>Lerne die Regeln und übe!</p></div>
+<div class="ct2" id="gramTabs"></div>
+<div id="gramContent"></div></div>
+<div class="sc" id="exam"><div class="card"><h2>📝 Prüfung</h2><p>Teste dein Wissen!</p>
+<button class="btn btn-p" id="examStart" onclick="startExam()">🚀 Prüfung starten</button></div>
+<div id="examArea"></div></div>
+<div class="sc" id="done"><div class="card"><h2>✅ Geschafft!</h2><p>Diese Wörter kannst du schon:</p></div>
+<div class="wl-grid" id="doneGrid"></div>
+<div class="card" id="doneEmpty"><p>Noch keine Wörter geschafft. Übe weiter! 💪</p></div>
+<div class="card"><h2>🚦 Bilan — Was kannst du schon?</h2><p>Bewerte dich selbst:</p>
+<div id="bilanList"></div></div></div>
+<div class="sc" id="numbers"><div class="card"><h2>🔢 Zahlen</h2><p>Klicke auf eine Zahl, um sie zu hören! Übe im Trainingsmodus!</p></div>
+<div class="card"><h3>0 – 10</h3><div class="num-grid" id="numGrid1"></div></div>
+<div class="card"><h3>11 – 20</h3><div class="num-grid" id="numGrid2"></div></div>
+<div class="card"><h3>Zehner & Zusammengesetzte 21 – 100</h3><div class="num-grid" id="numGrid3"></div></div>
+<div class="card"><h3>🎯 Zahlen-Training</h3><p>Schreibe die Zahl auf Französisch!</p>
+<div class="fw" id="numQ" style="font-size:2.2em;color:var(--p)"></div>
+<div class="acc-row" id="numaccr"></div>
+<input class="wi" id="numInp" placeholder="Französisch..." autocomplete="off">
+<div style="margin-top:10px" id="numFb"></div>
+<div style="margin-top:10px"><button class="btn btn-p" id="numChk" onclick="numCheck()">✔ Prüfen</button>
+<button class="btn btn-g" id="numNxt" onclick="numNext()" style="display:none">➡️ Weiter</button></div>
+<div class="fcn" id="numCnt"></div></div></div>
+<div class="sc" id="practice"><div class="card"><h2>🔄 Weiter üben</h2><p>Diese Wörter musst du noch üben:</p></div>
+<div class="wl-grid" id="pracGrid"></div>
+<div class="card" id="pracEmpty"><p>Alles richtig! Keine Fehler! 🎉</p></div>
+<div class="card"><button class="btn btn-p" onclick="initPracticeWrite()">✍️ Fehler üben</button></div></div>
+</div>
+<script>
+// ===== 📚 VOCABULARY — ADD NEW WORDS HERE =====
+const VOCAB=[
+// 🤝 Begrüßung
+{fr:"Bonjour !",de:"Guten Tag!",cat:"Begrüßung"},
+{fr:"Salut !",de:"Hallo! / Grüß dich!",cat:"Begrüßung"},
+{fr:"Bienvenue !",de:"Willkommen!",cat:"Begrüßung"},
+{fr:"Bonjour, madame !",de:"Guten Tag, Frau ...!",cat:"Begrüßung"},
+{fr:"Bonjour, monsieur !",de:"Guten Tag, Herr ...!",cat:"Begrüßung"},
+{fr:"Ça va ?",de:"Wie geht's?",cat:"Begrüßung"},
+{fr:"Ça va bien, merci.",de:"Es geht mir gut, danke.",cat:"Begrüßung"},
+{fr:"Oui, ça va.",de:"Ja, es geht.",cat:"Begrüßung"},
+// 👋 Vorstellen
+{fr:"Je m'appelle ...",de:"Ich heiße ...",cat:"Vorstellen"},
+{fr:"Et toi ?",de:"Und du?",cat:"Vorstellen"},
+{fr:"Moi, je suis ...",de:"Ich, ich bin ...",cat:"Vorstellen"},
+{fr:"Tu t'appelles comment ?",de:"Wie heißt du?",cat:"Vorstellen"},
+{fr:"C'est qui ?",de:"Wer ist das?",cat:"Vorstellen"},
+{fr:"moi",de:"ich",cat:"Vorstellen"},
+{fr:"toi",de:"du",cat:"Vorstellen"},
+// 👋 Verabschiedung
+{fr:"Au revoir !",de:"Auf Wiedersehen!",cat:"Verabschiedung"},
+{fr:"Salut !",de:"Tschüs!",cat:"Verabschiedung"},
+{fr:"À demain !",de:"Bis morgen!",cat:"Verabschiedung"},
+{fr:"À plus !",de:"Bis später!",cat:"Verabschiedung"},
+// ❓ Fragen
+{fr:"Comment ?",de:"Wie?",cat:"Fragen"},
+{fr:"Quoi ?",de:"Was?",cat:"Fragen"},
+{fr:"C'est qui ?",de:"Wer ist das?",cat:"Fragen"},
+{fr:"Tu es de Paris ?",de:"Bist du aus Paris?",cat:"Fragen"},
+{fr:"Tu es d'ici ?",de:"Bist du von hier?",cat:"Fragen"},
+{fr:"Ça va bien ?",de:"Geht es dir gut?",cat:"Fragen"},
+// 🎒 Schulsachen
+{fr:"un sac à dos",de:"ein Rucksack",cat:"Schulsachen"},
+{fr:"un crayon",de:"ein Bleistift",cat:"Schulsachen"},
+{fr:"un feutre",de:"ein Filzstift",cat:"Schulsachen"},
+{fr:"une gomme",de:"ein Radiergummi",cat:"Schulsachen"},
+{fr:"un cahier",de:"ein Heft",cat:"Schulsachen"},
+{fr:"un stylo",de:"ein Füller / Kuli",cat:"Schulsachen"},
+{fr:"un classeur",de:"ein Ordner",cat:"Schulsachen"},
+{fr:"une règle",de:"ein Lineal",cat:"Schulsachen"},
+{fr:"un effaceur",de:"ein Tintenkiller",cat:"Schulsachen"},
+{fr:"un livre",de:"ein Buch",cat:"Schulsachen"},
+{fr:"une trousse",de:"ein Mäppchen",cat:"Schulsachen"},
+// 🐾 Tiere
+{fr:"un chien",de:"ein Hund",cat:"Tiere"},
+{fr:"un chat",de:"eine Katze",cat:"Tiere"},
+{fr:"un lapin",de:"ein Kaninchen",cat:"Tiere"},
+{fr:"un éléphant",de:"ein Elefant",cat:"Tiere"},
+{fr:"un hamster",de:"ein Hamster",cat:"Tiere"},
+{fr:"une tortue",de:"eine Schildkröte",cat:"Tiere"},
+{fr:"une perruche",de:"ein Wellensittich",cat:"Tiere"},
+{fr:"un serpent",de:"eine Schlange",cat:"Tiere"},
+{fr:"un rat",de:"eine Ratte",cat:"Tiere"},
+{fr:"un perroquet",de:"ein Papagei",cat:"Tiere"},
+{fr:"un canari",de:"ein Kanarienvogel",cat:"Tiere"},
+{fr:"un cochon",de:"ein Schwein",cat:"Tiere"},
+// 🎨 Farben
+{fr:"rouge",de:"rot",cat:"Farben"},
+{fr:"bleu",de:"blau",cat:"Farben"},
+{fr:"vert",de:"grün",cat:"Farben"},
+{fr:"marron",de:"braun",cat:"Farben"},
+{fr:"jaune",de:"gelb",cat:"Farben"},
+{fr:"blanc",de:"weiß",cat:"Farben"},
+{fr:"noir",de:"schwarz",cat:"Farben"},
+{fr:"orange",de:"orange",cat:"Farben"},
+{fr:"gris",de:"grau",cat:"Farben"},
+{fr:"rose",de:"rosa",cat:"Farben"},
+// 👫 Personen
+{fr:"un garçon",de:"ein Junge",cat:"Personen"},
+{fr:"une fille",de:"ein Mädchen",cat:"Personen"},
+{fr:"une dame",de:"eine Dame / Frau",cat:"Personen"},
+{fr:"un monsieur",de:"ein Herr / Mann",cat:"Personen"},
+{fr:"un copain",de:"ein Freund",cat:"Personen"},
+{fr:"une copine",de:"eine Freundin",cat:"Personen"},
+{fr:"madame",de:"Frau",cat:"Personen"},
+{fr:"monsieur",de:"Herr",cat:"Personen"},
+{fr:"un enfant",de:"ein Kind",cat:"Personen"},
+{fr:"les amis",de:"die Freunde",cat:"Personen"},
+{fr:"les copains",de:"die Freunde",cat:"Personen"},
+// 🏘️ Orte
+{fr:"la France",de:"Frankreich",cat:"Orte"},
+{fr:"dans la rue",de:"auf der Straße",cat:"Orte"},
+{fr:"une pharmacie",de:"eine Apotheke",cat:"Orte"},
+{fr:"un cinéma",de:"ein Kino",cat:"Orte"},
+{fr:"une boulangerie",de:"eine Bäckerei",cat:"Orte"},
+{fr:"une médiathèque",de:"eine Mediathek",cat:"Orte"},
+{fr:"un café",de:"ein Café",cat:"Orte"},
+{fr:"un parc",de:"ein Park",cat:"Orte"},
+{fr:"un restaurant",de:"ein Restaurant",cat:"Orte"},
+{fr:"un bureau de poste",de:"ein Postamt",cat:"Orte"},
+// 💬 Phrasen
+{fr:"Attention !",de:"Achtung! Vorsicht!",cat:"Phrasen"},
+{fr:"Pardon !",de:"Entschuldigung!",cat:"Phrasen"},
+{fr:"Merci !",de:"Danke!",cat:"Phrasen"},
+{fr:"oui",de:"ja",cat:"Phrasen"},
+{fr:"non",de:"nein",cat:"Phrasen"},
+{fr:"c'est",de:"das ist",cat:"Phrasen"},
+{fr:"voilà",de:"da ist / da sind",cat:"Phrasen"},
+{fr:"aussi",de:"auch",cat:"Phrasen"},
+{fr:"mais",de:"aber",cat:"Phrasen"},
+{fr:"et",de:"und",cat:"Phrasen"},
+{fr:"ici",de:"hier",cat:"Phrasen"},
+{fr:"bien",de:"gut",cat:"Phrasen"},
+{fr:"super",de:"super / toll",cat:"Phrasen"},
+{fr:"fantastique",de:"fantastisch / toll",cat:"Phrasen"},
+{fr:"bizarre",de:"komisch / merkwürdig",cat:"Phrasen"},
+{fr:"c'est bon !",de:"das ist gut!",cat:"Phrasen"},
+{fr:"Bof !",de:"Na ja / Ach.",cat:"Phrasen"},
+{fr:"pour",de:"für",cat:"Phrasen"},
+{fr:"de / d'",de:"von / aus",cat:"Phrasen"},
+{fr:"à",de:"in / nach",cat:"Phrasen"},
+{fr:"en classe",de:"im Unterricht",cat:"Phrasen"},
+{fr:"Viens !",de:"Komm!",cat:"Phrasen"},
+{fr:"Venez !",de:"Kommt!",cat:"Phrasen"},
+// 🍽️ Verschiedenes
+{fr:"un ballon",de:"ein Ball",cat:"Verschiedenes"},
+{fr:"un bonbon",de:"ein Bonbon",cat:"Verschiedenes"},
+{fr:"un croissant",de:"ein Croissant",cat:"Verschiedenes"},
+{fr:"une maison",de:"ein Haus",cat:"Verschiedenes"},
+{fr:"une main",de:"eine Hand",cat:"Verschiedenes"},
+{fr:"une chanson",de:"ein Lied",cat:"Verschiedenes"},
+{fr:"une bise",de:"ein Küsschen",cat:"Verschiedenes"},
+{fr:"papa",de:"Papa",cat:"Verschiedenes"},
+{fr:"vite",de:"schnell",cat:"Verschiedenes"},
+// 🔢 Zahlen 0-100
+{fr:"zéro",de:"0",cat:"Zahlen"},{fr:"un",de:"1",cat:"Zahlen"},{fr:"deux",de:"2",cat:"Zahlen"},
+{fr:"trois",de:"3",cat:"Zahlen"},{fr:"quatre",de:"4",cat:"Zahlen"},{fr:"cinq",de:"5",cat:"Zahlen"},
+{fr:"six",de:"6",cat:"Zahlen"},{fr:"sept",de:"7",cat:"Zahlen"},{fr:"huit",de:"8",cat:"Zahlen"},
+{fr:"neuf",de:"9",cat:"Zahlen"},{fr:"dix",de:"10",cat:"Zahlen"},{fr:"onze",de:"11",cat:"Zahlen"},
+{fr:"douze",de:"12",cat:"Zahlen"},{fr:"treize",de:"13",cat:"Zahlen"},{fr:"quatorze",de:"14",cat:"Zahlen"},
+{fr:"quinze",de:"15",cat:"Zahlen"},{fr:"seize",de:"16",cat:"Zahlen"},{fr:"dix-sept",de:"17",cat:"Zahlen"},
+{fr:"dix-huit",de:"18",cat:"Zahlen"},{fr:"dix-neuf",de:"19",cat:"Zahlen"},{fr:"vingt",de:"20",cat:"Zahlen"},
+{fr:"vingt et un",de:"21",cat:"Zahlen"},{fr:"vingt-deux",de:"22",cat:"Zahlen"},
+{fr:"vingt-trois",de:"23",cat:"Zahlen"},{fr:"vingt-quatre",de:"24",cat:"Zahlen"},
+{fr:"vingt-cinq",de:"25",cat:"Zahlen"},
+{fr:"trente",de:"30",cat:"Zahlen"},{fr:"trente et un",de:"31",cat:"Zahlen"},{fr:"trente-deux",de:"32",cat:"Zahlen"},
+{fr:"quarante",de:"40",cat:"Zahlen"},{fr:"quarante et un",de:"41",cat:"Zahlen"},{fr:"quarante-deux",de:"42",cat:"Zahlen"},
+{fr:"cinquante",de:"50",cat:"Zahlen"},{fr:"cinquante et un",de:"51",cat:"Zahlen"},{fr:"cinquante-deux",de:"52",cat:"Zahlen"},
+{fr:"soixante",de:"60",cat:"Zahlen"},{fr:"soixante et un",de:"61",cat:"Zahlen"},{fr:"soixante-deux",de:"62",cat:"Zahlen"},
+{fr:"soixante-dix",de:"70",cat:"Zahlen"},{fr:"soixante et onze",de:"71",cat:"Zahlen"},{fr:"soixante-douze",de:"72",cat:"Zahlen"},
+{fr:"quatre-vingts",de:"80",cat:"Zahlen"},{fr:"quatre-vingt-un",de:"81",cat:"Zahlen"},{fr:"quatre-vingt-deux",de:"82",cat:"Zahlen"},
+{fr:"quatre-vingt-dix",de:"90",cat:"Zahlen"},{fr:"quatre-vingt-onze",de:"91",cat:"Zahlen"},{fr:"quatre-vingt-douze",de:"92",cat:"Zahlen"},
+{fr:"cent",de:"100",cat:"Zahlen"},
+// 📖 ÊTRE
+{fr:"je suis",de:"ich bin",cat:"ÊTRE"},{fr:"tu es",de:"du bist",cat:"ÊTRE"},
+{fr:"il est",de:"er ist",cat:"ÊTRE"},{fr:"elle est",de:"sie ist",cat:"ÊTRE"}
+];
+// ===== 📐 GRAMMAR EXERCISES — ADD NEW EXERCISES HERE =====
+const GRAMMAR=[
+{type:"fill",prompt:"Salut, je ___ Lucie.",answer:"suis",hint:"être: ich bin = ?",topic:"être"},
+{type:"fill",prompt:"Bonjour! Je ___ Léo.",answer:"suis",hint:"être: ich bin",topic:"être"},
+{type:"fill",prompt:"Tu ___ de Paris?",answer:"es",hint:"être: du bist = ?",topic:"être"},
+{type:"fill",prompt:"Il ___ de Toulouse.",answer:"est",hint:"être: er ist = ?",topic:"être"},
+{type:"fill",prompt:"Elle ___ fantastique!",answer:"est",hint:"être: sie ist = ?",topic:"être"},
+{type:"fill",prompt:"C' ___ Marie.",answer:"est",hint:"c'est = das ist",topic:"être"},
+{type:"fill",prompt:"Moi, je ___ de Paris.",answer:"suis",hint:"ich bin = ?",topic:"être"},
+{type:"fill",prompt:"Paris, c' ___ super!",answer:"est",hint:"c'est = das ist",topic:"être"},
+{type:"choice",prompt:"C'est ___ copain.",options:["un","une"],answer:"un",hint:"copain = männlich",topic:"un/une"},
+{type:"choice",prompt:"C'est ___ copine.",options:["un","une"],answer:"une",hint:"copine = weiblich",topic:"un/une"},
+{type:"choice",prompt:"Voilà ___ chien.",options:["un","une"],answer:"un",hint:"chien = männlich",topic:"un/une"},
+{type:"choice",prompt:"C'est ___ gomme.",options:["un","une"],answer:"une",hint:"gomme = weiblich",topic:"un/une"},
+{type:"choice",prompt:"Voilà ___ livre.",options:["un","une"],answer:"un",hint:"livre = männlich",topic:"un/une"},
+{type:"choice",prompt:"C'est ___ trousse.",options:["un","une"],answer:"une",hint:"trousse = weiblich",topic:"un/une"},
+{type:"choice",prompt:"Voilà ___ stylo.",options:["un","une"],answer:"un",hint:"stylo = männlich",topic:"un/une"},
+{type:"choice",prompt:"C'est ___ règle.",options:["un","une"],answer:"une",hint:"règle = weiblich",topic:"un/une"},
+{type:"choice",prompt:"Voilà ___ fille.",options:["un","une"],answer:"une",hint:"fille = weiblich",topic:"un/une"},
+{type:"choice",prompt:"C'est ___ garçon.",options:["un","une"],answer:"un",hint:"garçon = männlich",topic:"un/une"},
+{type:"choice",prompt:"Voilà Léo. ___ est de Paris.",options:["Il","Elle"],answer:"Il",hint:"Léo = Junge",topic:"il/elle"},
+{type:"choice",prompt:"Voilà Marie. ___ est de Toulouse.",options:["Il","Elle"],answer:"Elle",hint:"Marie = Mädchen",topic:"il/elle"},
+{type:"choice",prompt:"Voilà Zoé. ___ est de Paris.",options:["Il","Elle"],answer:"Elle",hint:"Zoé = Mädchen",topic:"il/elle"},
+{type:"choice",prompt:"Voilà Clément. ___ est de Toulouse.",options:["Il","Elle"],answer:"Il",hint:"Clément = Junge",topic:"il/elle"},
+{type:"choice",prompt:"Voilà Pierre. ___ est de Brest.",options:["Il","Elle"],answer:"Il",hint:"Pierre = Junge",topic:"il/elle"},
+{type:"choice",prompt:"Voilà Joséphine. ___ est de Paris.",options:["Il","Elle"],answer:"Elle",hint:"Joséphine = Mädchen",topic:"il/elle"},
+];
+// ===== 🗣️ DIALOGUES — ADD NEW SCENARIOS HERE =====
+const DIALOGUES=[
+{id:"greet",title:"🤝 Begrüßung",desc:"Sich begrüßen",turns:[
+{who:"npc",name:"Marie",fr:"Bonjour !",de:"Guten Tag!"},
+{who:"you",hint:"Sag Guten Tag!",accept:["bonjour","bonjour !","salut","salut !"]},
+{who:"npc",name:"Marie",fr:"Je m'appelle Marie. Et toi ?",de:"Ich heiße Marie. Und du?"},
+{who:"you",hint:"Sag: Ich heiße (dein Name)",accept:["je m'appelle"],match:"startsWith"},
+{who:"npc",name:"Marie",fr:"Ça va ?",de:"Wie geht's?"},
+{who:"you",hint:"Sag: Es geht mir gut, danke.",accept:["ça va bien, merci","ça va bien","oui, ça va","ça va"]},
+{who:"npc",name:"Marie",fr:"Super ! Au revoir !",de:"Super! Auf Wiedersehen!"},
+{who:"you",hint:"Sag Auf Wiedersehen!",accept:["au revoir","au revoir !","salut","salut !","à demain","à plus"]},
+]},
+{id:"intro",title:"👋 Vorstellen",desc:"Jemanden vorstellen",turns:[
+{who:"npc",name:"Léo",fr:"Salut ! Tu t'appelles comment ?",de:"Hallo! Wie heißt du?"},
+{who:"you",hint:"Sag: Ich heiße...",accept:["je m'appelle"],match:"startsWith"},
+{who:"npc",name:"Léo",fr:"Tu es d'ici ?",de:"Bist du von hier?"},
+{who:"you",hint:"Sag ja oder nein!",accept:["oui","non","oui, je suis d'ici","non, je suis de"]},
+{who:"npc",name:"Léo",fr:"C'est mon copain Max.",de:"Das ist mein Freund Max."},
+{who:"npc",name:"Max",fr:"Bonjour !",de:"Hallo!"},
+{who:"you",hint:"Grüße Max!",accept:["bonjour","salut","bonjour !","salut !"]},
+]},
+{id:"school",title:"🎒 Schulsachen",desc:"Im Klassenzimmer",turns:[
+{who:"npc",name:"Prof",fr:"Bonjour, la classe !",de:"Guten Tag, Klasse!"},
+{who:"you",hint:"Sag Guten Tag!",accept:["bonjour","bonjour, monsieur","bonjour, madame","bonjour !"]},
+{who:"npc",name:"Prof",fr:"C'est un stylo ?",de:"Ist das ein Füller?"},
+{who:"you",hint:"Sag: Nein, das ist ein Bleistift.",accept:["non, c'est un crayon","non","c'est un crayon"]},
+{who:"npc",name:"Prof",fr:"Bien ! Et ça, c'est une gomme ?",de:"Gut! Und das, ist das ein Radiergummi?"},
+{who:"you",hint:"Sag: Ja, das ist ein Radiergummi.",accept:["oui, c'est une gomme","oui","c'est une gomme"]},
+]},
+{id:"animal",title:"🐾 Lieblingstier",desc:"Über Tiere sprechen",turns:[
+{who:"npc",name:"Zoé",fr:"Salut ! J'ai un chat. Et toi ?",de:"Hallo! Ich habe eine Katze. Und du?"},
+{who:"you",hint:"Sag: Ich habe einen Hund / eine Katze / ...",accept:["j'ai un","j'ai une"],match:"startsWith"},
+{who:"npc",name:"Zoé",fr:"C'est un animal super !",de:"Das ist ein super Tier!"},
+{who:"you",hint:"Sag: Ja, super! / Danke!",accept:["oui","super","oui, super","merci","merci !","c'est super"]},
+]},
+{id:"city",title:"🏙️ Woher kommst du?",desc:"Herkunft",turns:[
+{who:"npc",name:"Clément",fr:"Bonjour ! Tu es de Paris ?",de:"Hallo! Bist du aus Paris?"},
+{who:"you",hint:"Sag nein/ja und woher du bist",accept:["oui","non","oui, je suis de","non, je suis de"],match:"startsWith"},
+{who:"npc",name:"Clément",fr:"Moi, je suis de Toulouse. C'est super !",de:"Ich bin aus Toulouse. Das ist super!"},
+{who:"you",hint:"Sag: Das ist toll! / Super!",accept:["super","c'est super","c'est super !","fantastique","c'est bien"]},
+]},
+{id:"count",title:"🔢 Zahlen",desc:"Zählen üben",turns:[
+{who:"npc",name:"Prof",fr:"Comptez avec moi ! Un, deux, trois...",de:"Zählt mit! Eins, zwei, drei..."},
+{who:"you",hint:"Sag: quatre, cinq, six",accept:["quatre, cinq, six","quatre cinq six","quatre","quatre, cinq"]},
+{who:"npc",name:"Prof",fr:"Très bien ! Et après six ?",de:"Sehr gut! Und nach sechs?"},
+{who:"you",hint:"Sag: sept, huit, neuf, dix",accept:["sept, huit, neuf, dix","sept huit neuf dix","sept","sept, huit"]},
+{who:"npc",name:"Prof",fr:"Bravo ! 🎉",de:"Bravo!"},
+]},
+];
+// ===== 🚦 BILAN SKILLS =====
+const BILAN=[
+{id:"greet",text:"Ich kann jemanden begrüßen"},
+{id:"name",text:"Ich kann nach dem Namen fragen und meinen sagen"},
+{id:"askHow",text:"Ich kann fragen, wie es jemandem geht"},
+{id:"ansHow",text:"Ich kann sagen, wie es mir geht"},
+{id:"bye",text:"Ich kann mich verabschieden"},
+{id:"etre",text:"Ich kann être (sein) konjugieren"},
+{id:"unune",text:"Ich kann un/une richtig verwenden"},
+{id:"ilelle",text:"Ich kann il/elle richtig verwenden"},
+{id:"nums",text:"Ich kenne die Zahlen 0–100"},
+{id:"school",text:"Ich kenne die Schulsachen auf Französisch"},
+{id:"animals",text:"Ich kenne Tiere auf Französisch"},
+];
+// ===== 🔧 APP STATE & HELPERS =====
+let mastered=JSON.parse(localStorage.getItem('fr_mastered')||'{}');
+let practice=JSON.parse(localStorage.getItem('fr_practice')||'{}');
+let streak=parseInt(localStorage.getItem('fr_streak')||'0');
+let best=parseInt(localStorage.getItem('fr_best')||'0');
+let bilanState=JSON.parse(localStorage.getItem('fr_bilan')||'{}');
+const CATS=[...new Set(VOCAB.map(v=>v.cat))];
+const ACCENTS=['é','è','ê','ë','à','â','ç','î','ï','ô','ù','û','œ','æ','É','È','Ê','Ë','À','Â','Ç','Î','Ï','Ô','Ù','Û','Œ','Æ',"'"];
+let FLIST=VOCAB.slice(),SLIST=VOCAB.slice(),WLIST=VOCAB.slice();
+let fi=0,si=0,wi=0;
+let curDlg=null,curTurn=0;
+function save(){localStorage.setItem('fr_mastered',JSON.stringify(mastered));localStorage.setItem('fr_practice',JSON.stringify(practice));localStorage.setItem('fr_streak',''+streak);localStorage.setItem('fr_best',''+best);localStorage.setItem('fr_bilan',JSON.stringify(bilanState));updStats();}
+function updStats(){
+const mc=Object.keys(mastered).length,pc=Object.keys(practice).length;
+$('stk').textContent=streak;$('bst').textContent=best;$('mst').textContent=mc;$('wrn').textContent=pc;
+$('pbar').style.width=VOCAB.length?Math.round(mc/VOCAB.length*100)+'%':'0%';
+}
+function $(id){return document.getElementById(id)}
+function go(sec){
+document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));
+$(sec).classList.add('on');
+document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+document.querySelectorAll('.nb').forEach(b=>{if(b.textContent.includes(secEmoji(sec)))b.classList.add('on')});
+if(sec==='list')renderList();if(sec==='flash')initFlash();if(sec==='write')initWrite();
+if(sec==='speak')initSpeak();if(sec==='dialog')initDlgList();if(sec==='grammar')initGrammar();
+if(sec==='exam'){$('examStart').style.display='';$('examArea').innerHTML='';}
+if(sec==='done')renderDone();if(sec==='practice')renderPractice();if(sec==='numbers')initNumbers();
+window.scrollTo(0,0);
+}
+function secEmoji(s){return{home:'🏠',list:'📖',flash:'📇',write:'✍️',speak:'🎤',dialog:'🗣️',grammar:'📐',exam:'📝',done:'✅',practice:'🔄',numbers:'🔢'}[s]||''}
+// ===== 🔊 SPEECH =====
+function speak(text){const u=new SpeechSynthesisUtterance(text.replace(/[!?\.]/g,''));u.lang='fr-FR';u.rate=.85;speechSynthesis.speak(u);}
+function accentRow(cid,iid){
+const c=$(cid);c.innerHTML='';const tgt=iid||{waccr:'winp',daccr:'dlgInp',numaccr:'numInp'}[cid]||'winp';
+const lo=['é','è','ê','ë','à','â','ç','î','ï','ô','ù','û','œ','æ',"'"];
+const up=['É','È','Ê','Ë','À','Â','Ç','Î','Ï','Ô','Ù','Û','Œ','Æ'];
+function ab(ch){const b=document.createElement('button');b.className='acc-btn';b.textContent=ch;b.onclick=()=>{const inp=$(tgt);if(!inp)return;const p=inp.selectionStart||inp.value.length;inp.value=inp.value.slice(0,p)+ch+inp.value.slice(p);inp.focus();};c.appendChild(b);}
+lo.forEach(ab);const br=document.createElement('div');br.style.width='100%';br.style.height='2px';c.appendChild(br);up.forEach(ab);}
+// ===== CATEGORY FILTERS =====
+function catBtns(containerId,cb){
+const c=$(containerId);c.innerHTML='';
+const all=document.createElement('button');all.className='ctb on';all.textContent='Alle';
+all.onclick=()=>{c.querySelectorAll('.ctb').forEach(b=>b.classList.remove('on'));all.classList.add('on');cb('Alle');};
+c.appendChild(all);
+CATS.forEach(cat=>{const b=document.createElement('button');b.className='ctb';b.textContent=cat;
+b.onclick=()=>{c.querySelectorAll('.ctb').forEach(b2=>b2.classList.remove('on'));b.classList.add('on');cb(cat);};
+c.appendChild(b);});
+}
+function filterVocab(cat){return cat==='Alle'?VOCAB.slice():VOCAB.filter(v=>v.cat===cat);}
+// ===== 📖 WORD LIST =====
+function renderList(cat){
+cat=cat||'Alle';catBtns('listCats',c=>{renderList(c);});
+const items=filterVocab(cat);const g=$('listGrid');g.innerHTML='';
+items.forEach(v=>{const d=document.createElement('div');d.className='wl-item';
+d.innerHTML=`<span><span class="wl-fr">${v.fr}</span><br><span class="wl-de">${v.de}</span></span><span>🔊</span>`;
+d.onclick=()=>speak(v.fr);g.appendChild(d);});
+}
+// ===== 📇 FLASHCARDS =====
+function initFlash(cat){cat=cat||'Alle';catBtns('flashCats',c=>{initFlash(c);});FLIST=filterVocab(cat);fi=0;showFlash();}
+function showFlash(){if(!FLIST.length)return;const v=FLIST[fi];$('fde').textContent=v.de;$('ffr').textContent=v.fr;$('fcard').classList.remove('fl');$('fcnt').textContent=`${fi+1}/${FLIST.length}`;}
+function flip(){$('fcard').classList.toggle('fl');speak(FLIST[fi].fr);}
+function fnext(){fi=(fi+1)%FLIST.length;showFlash();}
+function fprev(){fi=(fi-1+FLIST.length)%FLIST.length;showFlash();}
+// ===== ✍️ WRITE MODE =====
+function initWrite(cat){cat=cat||'Alle';catBtns('writeCats',c=>{initWrite(c);});WLIST=filterVocab(cat);wi=0;showWrite();}
+function showWrite(){if(!WLIST.length)return;$('wword').textContent=WLIST[wi].de;$('winp').value='';$('winp').className='wi';$('wfb').innerHTML='';$('wchk').style.display='';$('wnxt').style.display='none';$('wcnt').textContent=`${wi+1}/${WLIST.length}`;accentRow('waccr');$('winp').focus();}
+function norm(s){return s.toLowerCase().trim().replace(/\.{2,}$/,'').replace(/…$/,'').replace(/\s+/g,' ').trim();}
+function wcheck(){
+const v=WLIST[wi],inp=norm($('winp').value),ans=norm(v.fr);
+if(inp===ans){$('winp').className='wi ok';$('wfb').innerHTML=`<span style="color:var(--ok);font-weight:700">✅ Richtig! ${v.fr}</span>`;streak++;if(streak>best)best=streak;mastered[v.fr]=1;delete practice[v.fr];confetti();
+}else{$('winp').className='wi no';$('wfb').innerHTML=`<span style="color:var(--s);font-weight:700">❌ Richtig wäre: <b>${v.fr}</b></span>`;streak=0;practice[v.fr]=1;}
+save();$('wchk').style.display='none';$('wnxt').style.display='';
+}
+function wnext(){wi=(wi+1)%WLIST.length;showWrite();}
+// ===== 🎤 SPEAK MODE (IMPROVED) =====
+let hasSR=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+function initSpeak(cat){cat=cat||'Alle';catBtns('speakCats',c=>{initSpeak(c);});SLIST=filterVocab(cat);si=0;showSpeak();}
+function showSpeak(){if(!SLIST.length)return;$('spword').textContent=SLIST[si].fr;$('spfb').innerHTML='';$('spnxt').style.display='none';$('spcnt').textContent=(si+1)+'/'+SLIST.length;speak(SLIST[si].fr);
+const mc=$('spmic');mc.innerHTML='';
+if(hasSR){const b=document.createElement('button');b.className='mic-btn';b.textContent='🎤';b.onclick=listenSp;mc.appendChild(b);}
+const fb=document.createElement('button');fb.className='btn btn-o btn-sm';fb.textContent="Ich hab's gesagt ✅";fb.style.marginLeft='10px';fb.onclick=()=>{$('spfb').innerHTML='<span style="color:var(--ok);font-weight:700">👍 Super!</span>';streak++;if(streak>best)best=streak;mastered[SLIST[si].fr]=1;save();confetti();$('spnxt').style.display='';};mc.appendChild(fb);}
+function snext(){si=(si+1)%SLIST.length;showSpeak();}
+// ===== 🗣️ DIALOG ENGINE =====
+function initDlgList(){const c=$('dlgList');c.innerHTML='';
+DIALOGUES.forEach(d=>{const b=document.createElement('button');b.className='ctb';b.textContent=d.title;
+b.onclick=()=>{startDlg(d);};c.appendChild(b);});$('dlgArea').style.display='none';}
+function startDlg(d){curDlg=d;curTurn=0;$('dlgArea').style.display='';$('chatBox').innerHTML='';$('dlgInput').style.display='none';advanceDlg();}
+function advanceDlg(){if(curTurn>=curDlg.turns.length){$('dlgInput').style.display='none';
+const done=document.createElement('div');done.className='result';done.innerHTML='<div class="r-emoji">🎉</div><div class="r-title">Dialog geschafft!</div><div class="r-text">Bravo!</div>';
+$('chatBox').appendChild(done);confetti();return;}
+const t=curDlg.turns[curTurn];
+if(t.who==='npc'){addBubble(t.name,t.fr,t.de,'l');speak(t.fr);curTurn++;setTimeout(advanceDlg,800);}
+else{$('dlgInput').style.display='';$('dlgHint').textContent='💡 '+t.hint;$('dlgInp').value='';$('dlgInp').className='wi';$('dlgFb').innerHTML='';$('dlgChk').style.display='';$('dlgHlp').style.display='';$('dlgNxt').style.display='none';accentRow('daccr');$('dlgInp').focus();}
+}
+function addBubble(name,fr,de,side){const d=document.createElement('div');d.className=`chat-bubble chat-${side}`;
+d.innerHTML=`${name?`<div class="chat-name">${name}</div>`:''}<div class="chat-fr">${fr}</div><div class="chat-de">${de||''}</div>`;$('chatBox').appendChild(d);d.scrollIntoView({behavior:'smooth'});}
+function dlgCheck(){const t=curDlg.turns[curTurn];const inp=norm($('dlgInp').value);
+let ok=false;
+if(t.match==='startsWith'){ok=t.accept.some(a=>inp.startsWith(norm(a)));}
+else{ok=t.accept.map(norm).includes(inp);}
+if(ok){$('dlgInp').className='wi ok';$('dlgFb').innerHTML='<span style="color:var(--ok);font-weight:700">✅ Super!</span>';
+addBubble('Du',inp,'','r');streak++;if(streak>best)best=streak;save();confetti();
+$('dlgChk').style.display='none';$('dlgHlp').style.display='none';$('dlgNxt').style.display='';
+}else{$('dlgInp').className='wi no';$('dlgFb').innerHTML=`<span style="color:var(--s)">❌ Versuch nochmal! Tipp: ${t.hint}</span>`;streak=0;save();}
+}
+function dlgHelp(){const t=curDlg.turns[curTurn];$('dlgInp').value=t.accept[0];$('dlgFb').innerHTML=`<span style="color:var(--tl)">💡 Beispiel: ${t.accept[0]}</span>`;}
+function dlgNext(){curTurn++;advanceDlg();}
+// ===== 📐 GRAMMAR =====
+const GTOPICS=[...new Set(GRAMMAR.map(g=>g.topic))];
+let curGT='être';
+function initGrammar(){const c=$('gramTabs');c.innerHTML='';
+GTOPICS.forEach(t=>{const b=document.createElement('button');b.className='ctb'+(t===curGT?' on':'');b.textContent=t;
+b.onclick=()=>{curGT=t;initGrammar();};c.appendChild(b);});renderGram();}
+function renderGram(){const c=$('gramContent');c.innerHTML='';
+const rules={'être':'<h3>📖 être — sein</h3><p>je suis, tu es, il/elle/on est</p>',
+'un/une':'<h3>📖 un / une — ein / eine</h3><p>un = männlich (un garçon), une = weiblich (une fille)</p>',
+'il/elle':'<h3>📖 il / elle — er / sie</h3><p>il = er (Junge/Mann), elle = sie (Mädchen/Frau)</p>'};
+if(rules[curGT])c.innerHTML=`<div class="gram-rule">${rules[curGT]}</div>`;
+const exs=GRAMMAR.filter(g=>g.topic===curGT);
+exs.forEach((ex,i)=>{const d=document.createElement('div');d.className='exam-q';d.id='gq'+i;
+if(ex.type==='fill'){d.innerHTML=`<label>${ex.prompt.replace('___','______')}</label><input class="wi" id="gi${i}" style="max-width:200px;display:inline" placeholder="..."> <button class="btn btn-p btn-sm" onclick="checkGram(${i})">✓</button><div id="gf${i}" style="margin-top:6px"></div>`;
+}else{let opts=ex.options.map(o=>`<button class="btn btn-o btn-sm" onclick="pickGram(${i},'${o}')">${o}</button>`).join('');
+d.innerHTML=`<label>${ex.prompt.replace('___','______')}</label><div class="exam-opt">${opts}</div><div id="gf${i}" style="margin-top:6px"></div>`;}
+c.appendChild(d);});}
+function checkGram(i){const ex=GRAMMAR.filter(g=>g.topic===curGT)[i];const v=norm($('gi'+i).value);
+if(v===norm(ex.answer)){$('gf'+i).innerHTML=`<span style="color:var(--ok);font-weight:700">✅ Richtig!</span>`;confetti();}
+else{$('gf'+i).innerHTML=`<span style="color:var(--s)">❌ Richtig: <b>${ex.answer}</b> — ${ex.hint}</span>`;}}
+function pickGram(i,v){const ex=GRAMMAR.filter(g=>g.topic===curGT)[i];
+if(v===ex.answer){$('gf'+i).innerHTML=`<span style="color:var(--ok);font-weight:700">✅ Richtig!</span>`;confetti();}
+else{$('gf'+i).innerHTML=`<span style="color:var(--s)">❌ Richtig: <b>${ex.answer}</b> — ${ex.hint}</span>`;}}
+// ===== 📝 EXAM =====
+let examQs=[],examAns=[],examDone=false;
+function startExam(){examDone=false;$('examStart').style.display='none';
+const vqs=shuffle(VOCAB.slice()).slice(0,10);const gqs=shuffle(GRAMMAR.slice()).slice(0,5);
+examQs=[];examAns=[];const area=$('examArea');area.innerHTML='';
+vqs.forEach((v,i)=>{examQs.push({type:'vocab',v});const d=document.createElement('div');d.className='exam-q';d.id='eq'+i;
+d.innerHTML=`<label>${i+1}. Übersetze: <b>${v.de}</b></label><input class="wi" id="ea${i}" style="text-align:left" placeholder="Französisch..."><div id="ef${i}" style="margin-top:4px"></div>`;
+area.appendChild(d);});
+gqs.forEach((g,i)=>{const idx=vqs.length+i;examQs.push({type:'gram',g});const d=document.createElement('div');d.className='exam-q';d.id='eq'+idx;
+if(g.type==='fill'){d.innerHTML=`<label>${idx+1}. ${g.prompt.replace('___','______')}</label><input class="wi" id="ea${idx}" style="max-width:200px;text-align:left" placeholder="..."><div id="ef${idx}" style="margin-top:4px"></div>`;
+}else{let opts=g.options.map(o=>`<button class="btn btn-o btn-sm" onclick="examPick(${idx},'${o}')">${o}</button>`).join('');
+d.innerHTML=`<label>${idx+1}. ${g.prompt.replace('___','______')}</label><div class="exam-opt" id="eo${idx}">${opts}</div><div id="ef${idx}" style="margin-top:4px"></div>`;}
+area.appendChild(d);});
+const sub=document.createElement('div');sub.style.textAlign='center';sub.style.marginTop='16px';
+sub.innerHTML='<button class="btn btn-p" onclick="submitExam()">📝 Abgeben</button>';area.appendChild(sub);
+examQs.forEach((q,idx)=>{const inp=$('ea'+idx);if(inp){const ar=document.createElement('div');ar.className='acc-row';ar.id='eacc'+idx;inp.parentNode.insertBefore(ar,inp.nextSibling);accentRow('eacc'+idx,'ea'+idx);}});
+}
+function examPick(idx,v){const btns=document.querySelectorAll('#eo'+idx+' button');btns.forEach(b=>{b.classList.remove('sel');if(b.textContent===v)b.classList.add('sel');});$('eq'+idx).dataset.pick=v;}
+function submitExam(){if(examDone)return;examDone=true;let score=0;
+examQs.forEach((q,i)=>{let ans,correct;
+if(q.type==='vocab'){ans=norm($('ea'+i)?$('ea'+i).value:'');correct=norm(q.v.fr);
+if(ans===correct){$('ef'+i).innerHTML=`<span style="color:var(--ok);font-weight:700">✅</span>`;score++;}
+else{$('ef'+i).innerHTML=`<span style="color:var(--s)">❌ ${q.v.fr}</span>`;}}
+else{const g=q.g;if(g.type==='fill'){ans=norm($('ea'+i)?$('ea'+i).value:'');correct=norm(g.answer);
+if(ans===correct){$('ef'+i).innerHTML=`<span style="color:var(--ok);font-weight:700">✅</span>`;score++;}
+else{$('ef'+i).innerHTML=`<span style="color:var(--s)">❌ ${g.answer}</span>`;}}
+else{ans=$('eq'+i).dataset.pick||'';if(ans===g.answer){$('ef'+i).innerHTML=`<span style="color:var(--ok);font-weight:700">✅</span>`;score++;}
+else{$('ef'+i).innerHTML=`<span style="color:var(--s)">❌ ${g.answer}</span>`;}}}});
+const pct=Math.round(score/examQs.length*100);const emoji=pct>=80?'🎉':pct>=50?'👍':'💪';
+const res=document.createElement('div');res.className='result card';
+res.innerHTML=`<div class="r-emoji">${emoji}</div><div class="r-title">${score}/${examQs.length} richtig (${pct}%)</div><div class="r-text">${pct>=80?'Fantastisch!':pct>=50?'Gut gemacht!':'Weiter üben!'}</div><button class="btn btn-p" onclick="go('exam')" style="margin-top:12px">Nochmal</button>`;
+$('examArea').appendChild(res);if(pct>=80)confetti();
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+// ===== ✅ DONE / BILAN =====
+function renderDone(){
+const g=$('doneGrid');g.innerHTML='';
+const mKeys=Object.keys(mastered);
+$('doneEmpty').style.display=mKeys.length?'none':'';
+mKeys.forEach(k=>{const v=VOCAB.find(v2=>v2.fr===k);if(!v)return;
+const d=document.createElement('div');d.className='wl-item';
+d.innerHTML=`<span><span class="wl-fr">${v.fr}</span><br><span class="wl-de">${v.de}</span></span><span>🔊</span>`;
+d.onclick=()=>speak(v.fr);g.appendChild(d);});
+renderBilan();}
+function renderBilan(){const c=$('bilanList');c.innerHTML='';
+BILAN.forEach(b=>{const d=document.createElement('div');d.className='bilan-item';
+const state=bilanState[b.id]||0;
+d.innerHTML=`<div class="tl"><span class="tl-r${state===1?' on':''}" onclick="setBilan('${b.id}',1)"></span><span class="tl-y${state===2?' on':''}" onclick="setBilan('${b.id}',2)"></span><span class="tl-g${state===3?' on':''}" onclick="setBilan('${b.id}',3)"></span></div><span>${b.text}</span>`;
+c.appendChild(d);});}
+function setBilan(id,v){bilanState[id]=v;save();renderBilan();}
+// ===== 🔄 PRACTICE =====
+function renderPractice(){
+const g=$('pracGrid');g.innerHTML='';
+const pKeys=Object.keys(practice);
+$('pracEmpty').style.display=pKeys.length?'none':'';
+pKeys.forEach(k=>{const v=VOCAB.find(v2=>v2.fr===k);if(!v)return;
+const d=document.createElement('div');d.className='wl-item';
+d.innerHTML=`<span><span class="wl-fr">${v.fr}</span><br><span class="wl-de">${v.de}</span></span><span>🔊</span>`;
+d.onclick=()=>speak(v.fr);g.appendChild(d);});}
+function initPracticeWrite(){const pKeys=Object.keys(practice);if(!pKeys.length){alert('Keine Fehler zum Üben!');return;}
+WLIST=pKeys.map(k=>VOCAB.find(v=>v.fr===k)).filter(Boolean);wi=0;go('write');showWrite();}
+// ===== 🎉 CONFETTI =====
+function confetti(){const cols=['#6C63FF','#FF6584','#00C853','#FFD600','#E040FB','#00BCD4'];
+for(let i=0;i<25;i++){const c=document.createElement('div');c.className='cof';
+c.style.left=Math.random()*100+'vw';c.style.background=cols[Math.floor(Math.random()*cols.length)];
+c.style.animationDuration=(2+Math.random()*2)+'s';c.style.animationDelay=Math.random()*0.5+'s';
+document.body.appendChild(c);setTimeout(()=>c.remove(),4000);}}
+// ===== 🗑️ RESET =====
+function resetAll(){if(!confirm('Fortschritt wirklich löschen?'))return;mastered={};practice={};streak=0;best=0;bilanState={};save();go('home');}
+// ===== 💾 EXPORT / IMPORT =====
+function exportProgress(){
+const data={mastered,practice,streak,best,bilanState,date:new Date().toISOString(),version:1};
+const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+a.download='franz-fortschritt-'+new Date().toISOString().slice(0,10)+'.json';
+a.click();URL.revokeObjectURL(a.href);
+}
+function importProgress(){$('impFile').click();}
+function doImport(e){
+const f=e.target.files[0];if(!f)return;
+const r=new FileReader();r.onload=function(ev){
+try{const d=JSON.parse(ev.target.result);
+if(!d.mastered&&!d.practice){alert('❌ Ungültige Datei!');return;}
+if(!confirm('Aktuellen Fortschritt mit gespeichertem ersetzen?\n\nDatei vom: '+(d.date?d.date.slice(0,10):'unbekannt')))return;
+mastered=d.mastered||{};practice=d.practice||{};streak=d.streak||0;best=d.best||0;bilanState=d.bilanState||{};
+save();go('home');alert('✅ Fortschritt geladen! ('+Object.keys(mastered).length+' Wörter geschafft)');
+}catch(err){alert('❌ Fehler beim Laden: '+err.message);}};
+r.readAsText(f);e.target.value='';
+}
+// ===== 🔢 ZAHLEN TAB =====
+const NUMS=[{n:0,fr:"zéro"},{n:1,fr:"un"},{n:2,fr:"deux"},{n:3,fr:"trois"},{n:4,fr:"quatre"},{n:5,fr:"cinq"},{n:6,fr:"six"},{n:7,fr:"sept"},{n:8,fr:"huit"},{n:9,fr:"neuf"},{n:10,fr:"dix"},{n:11,fr:"onze"},{n:12,fr:"douze"},{n:13,fr:"treize"},{n:14,fr:"quatorze"},{n:15,fr:"quinze"},{n:16,fr:"seize"},{n:17,fr:"dix-sept"},{n:18,fr:"dix-huit"},{n:19,fr:"dix-neuf"},{n:20,fr:"vingt"},
+{n:21,fr:"vingt et un"},{n:22,fr:"vingt-deux"},{n:23,fr:"vingt-trois"},{n:24,fr:"vingt-quatre"},{n:25,fr:"vingt-cinq"},{n:30,fr:"trente"},{n:31,fr:"trente et un"},{n:32,fr:"trente-deux"},{n:40,fr:"quarante"},{n:41,fr:"quarante et un"},{n:42,fr:"quarante-deux"},{n:50,fr:"cinquante"},{n:51,fr:"cinquante et un"},{n:52,fr:"cinquante-deux"},
+{n:60,fr:"soixante"},{n:61,fr:"soixante et un"},{n:62,fr:"soixante-deux"},{n:70,fr:"soixante-dix"},{n:71,fr:"soixante et onze"},{n:72,fr:"soixante-douze"},{n:80,fr:"quatre-vingts"},{n:81,fr:"quatre-vingt-un"},{n:82,fr:"quatre-vingt-deux"},{n:90,fr:"quatre-vingt-dix"},{n:91,fr:"quatre-vingt-onze"},{n:92,fr:"quatre-vingt-douze"},{n:100,fr:"cent"}];
+let numList=[],ni=0;
+function buildNumGrid(cid,nums){const g=$(cid);g.innerHTML='';nums.forEach(item=>{const d=document.createElement('div');d.className='num-item';d.innerHTML='<div class="num-digit">'+item.n+'</div><div class="num-fr">'+item.fr+'</div>';d.onclick=()=>speak(item.fr);g.appendChild(d);});}
+function initNumbers(){buildNumGrid('numGrid1',NUMS.filter(x=>x.n>=0&&x.n<=10));buildNumGrid('numGrid2',NUMS.filter(x=>x.n>=11&&x.n<=20));buildNumGrid('numGrid3',NUMS.filter(x=>x.n>=21));numList=shuffle(NUMS.slice());ni=0;showNum();}
+function showNum(){if(!numList.length)return;$('numQ').textContent=numList[ni].n;$('numInp').value='';$('numInp').className='wi';$('numFb').innerHTML='';$('numChk').style.display='';$('numNxt').style.display='none';$('numCnt').textContent=(ni+1)+'/'+numList.length;accentRow('numaccr','numInp');$('numInp').focus();}
+function numCheck(){const item=numList[ni],inp=norm($('numInp').value),ans=norm(item.fr);if(inp===ans){$('numInp').className='wi ok';$('numFb').innerHTML='<span style="color:var(--ok);font-weight:700">✅ Richtig! '+item.fr+'</span>';streak++;if(streak>best)best=streak;mastered[item.fr]=1;delete practice[item.fr];confetti();speak(item.fr);}else{$('numInp').className='wi no';$('numFb').innerHTML='<span style="color:var(--s);font-weight:700">❌ Richtig wäre: <b>'+item.fr+'</b></span>';streak=0;practice[item.fr]=1;speak(item.fr);}save();$('numChk').style.display='none';$('numNxt').style.display='';}
+function numNext(){ni=(ni+1)%numList.length;showNum();}
+// ===== 🎤 IMPROVED SPEECH RECOGNITION =====
+function wordHighlight(heard,expected){const hw=heard.toLowerCase().split(/\s+/),ew=expected.toLowerCase().replace(/[!?.]/g,'').split(/\s+/);return ew.map(w=>{const m=hw.some(h=>norm(h)===norm(w));return m?'<span style="color:var(--ok);font-weight:700">'+w+'</span>':'<span style="color:var(--s);font-weight:700;text-decoration:underline">'+w+'</span>';}).join(' ');}
+function listenSp(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;const r=new SR();r.lang='fr-FR';r.interimResults=false;r.maxAlternatives=5;const btn=$('spmic').querySelector('.mic-btn');btn.classList.add('listening');r.onspeechend=()=>{r.stop();};
+r.onresult=e=>{btn.classList.remove('listening');const exp=norm(SLIST[si].fr);let bm=null,bc=0,bt='';for(let a=0;a<e.results[0].length;a++){const al=e.results[0][a];if(norm(al.transcript)===exp&&al.confidence>bc){bm=al;bc=al.confidence;bt=al.transcript;}}if(!bm){bc=e.results[0][0].confidence;bt=e.results[0][0].transcript;if(norm(bt)===exp)bm=e.results[0][0];}const hd=bt.toLowerCase();
+if(bm||norm(hd)===exp){const cf=bm?bm.confidence:bc;let m='';if(cf>0.85)m='🎉 Ausgezeichnet!';else if(cf>0.6)m='👍 Gut gemacht!';else m='✅ Erkannt!';$('spfb').innerHTML='<div style="color:var(--ok);font-weight:700">'+m+' ('+Math.round(cf*100)+'%)</div><div style="margin-top:6px;color:var(--tl)">Gehört: '+hd+'</div>';streak++;if(streak>best)best=streak;mastered[SLIST[si].fr]=1;save();confetti();
+}else{const hl=wordHighlight(hd,SLIST[si].fr);let tip='';if(bc<0.6)tip='🔄 Versuch es nochmal!';else tip='🤔 Fast richtig!';$('spfb').innerHTML='<div style="color:var(--s);font-weight:700">'+tip+'</div><div style="margin-top:6px">Gehört: '+hd+'</div><div style="margin-top:4px">Erwartet: '+hl+'</div><div style="margin-top:8px"><button class="btn btn-o btn-sm" onclick="speak(SLIST[si].fr)">🔊 Nochmal hören</button> <button class="btn btn-p btn-sm" onclick="listenSp()">🎤 Nochmal</button></div>';streak=0;save();}
+$('spnxt').style.display='';};r.onerror=()=>{btn.classList.remove('listening');$('spfb').innerHTML='<span style="color:var(--tl)">Mikrofon-Fehler. Nutze den Button unten.</span>';};r.start();}
+// ===== ⌨️ ENTER KEY =====
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){
+if($('write').classList.contains('on')){if($('wnxt').style.display!=='none')wnext();else wcheck();}
+if($('dialog').classList.contains('on')&&$('dlgInput').style.display!=='none'){if($('dlgNxt').style.display!=='none')dlgNext();else dlgCheck();}
+if($('numbers').classList.contains('on')){if($('numNxt').style.display!=='none')numNext();else numCheck();}
+}});
+// ===== 🚀 INIT =====
+updStats();
+
+</script>
+</body></html>
